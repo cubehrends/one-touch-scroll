@@ -1,8 +1,8 @@
-(function($) {
+( function( $ ) {
 
   $( document ).on( 'mousewheel DOMMouseScroll', function( event ) {
 
-    if ( ($( '.et_pb_side_nav' ).length === 0) || $('html, body').is(':animated') ) return;
+    if ( ( $( '.et_pb_side_nav' ).length === 0 ) || $( 'html, body' ).is( ':animated' ) ) return;
 
     event.preventDefault();
 
@@ -19,4 +19,4 @@
       $( $target ).children( 'a' ).trigger( "click" );
     }
   } );
-} )(jQuery);
+} )( jQuery );
