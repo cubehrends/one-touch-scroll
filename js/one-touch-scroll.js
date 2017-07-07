@@ -1,28 +1,22 @@
-(function() {
+(function($) {
 
-  var delay = false;
+  $( document ).on( 'mousewheel DOMMouseScroll', function( event ) {
 
-  jQuery( document ).on( 'mousewheel DOMMouseScroll', function( event ) {
-
-    if ( jQuery( '.et_pb_side_nav' ).length === 0 ) return;
+    if ( ($( '.et_pb_side_nav' ).length === 0) || $('html, body').is(':animated') ) return;
 
     event.preventDefault();
 
-    if( delay ) return;
-    delay = true;
-    setTimeout( function() {delay = false}, 200 );
-
     var direction = event.originalEvent.wheelDelta || -event.originalEvent.detail;
-    var $position = jQuery( '.et_pb_side_nav' ).find( '.active' );
+    var $position = $( '.et_pb_side_nav' ).find( '.active' );
     var $target;
 
     if( direction < 0 ) {
-      $target = jQuery( $position ).parent().next();
+      $target = $( $position ).parent().next();
     } else {
-      $target = jQuery( $position ).parent().prev();
+      $target = $( $position ).parent().prev();
     }
-    if ( jQuery( $target.length ) !== 0 ) {
-      jQuery( $target ).children( 'a' ).trigger( "click" );
+    if ( $( $target.length ) !== 0 ) {
+      $( $target ).children( 'a' ).trigger( "click" );
     }
   } );
-} )();
+} )(jQuery);
